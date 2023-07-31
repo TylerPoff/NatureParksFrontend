@@ -1,3 +1,1 @@
 TeamLT frontend README 
-
-test
