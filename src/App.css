@@ -1,3 +1,27 @@
 .App {
   text-align: center;
 }
+
+.nav {
+  background-color: green;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+.parks-logo {
+  align-items: center;
+}
+
+.nav-link-group {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  margin: 0 8px;
+  color: white;
+}
