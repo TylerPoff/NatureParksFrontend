@@ -6,6 +6,8 @@ import Container from "react-bootstrap/Container";
 import { Navbar, Nav } from "react-bootstrap";
 
 import './App.css';
+import ParksList from './components/ParksList';
+import Park from './components/Park';
 
 function App() {
   return (
@@ -20,8 +22,8 @@ function App() {
               My Trips
             </Nav.Link>
           </div>
-          <Navbar.Brand href="/">
-            <img src="" alt="park logo" className="parks-logo"/>
+          <Navbar.Brand href="/" className="navbar-brand-with-bg">
+            <img src="/images/parks-logo.png" alt="park logo" className="parks-logo"/>
           </Navbar.Brand>
           <div className="nav-link-group">
             <Nav.Link as={Link} to="/lists" className="nav-link">
@@ -33,6 +35,20 @@ function App() {
           </div>
         </Container>
       </Navbar>
+
+      <Routes>
+        <Route exact path="/parks" element={
+          <ParksList
+
+          />}
+        />
+        <Route exact path="/parks/:id" element={
+          <Park
+
+          />}
+        />
+        // TODO Add remaining routes
+      </Routes>
     </div>
   )
 }
