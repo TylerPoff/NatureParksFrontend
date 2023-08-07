@@ -8,6 +8,8 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 
+import "./ParksList.css";
+
 const ParksList = props => {
     
     const [parks, setParks] = useState([]);
@@ -151,6 +153,9 @@ const ParksList = props => {
                                     <Card.Img
                                     className="parkView"
                                     src={park.image+"/100px180"}
+                                    onError={(e) => {
+                                        e.target.src = "https://placehold.co/600x400?text=No+Image";
+                                    }}
                                     />
                                     <Card.Body>
                                         <Card.Title>
