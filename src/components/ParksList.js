@@ -99,7 +99,7 @@ const ParksList = props => {
 
     return (
         <div className="App">
-            <Container className="main-conatiner">
+            <Container className="main-container">
                 <Form>
                     <Row>
                         <Col>
@@ -158,14 +158,16 @@ const ParksList = props => {
                                     }}
                                     />
                                     <Card.Body>
-                                        <Card.Title>
+                                        <Card.Title className="parkTitle">
                                             {park.name}
                                         </Card.Title>
-                                        <Card.Text>
-                                            {park.year}
+                                        <Card.Text className="cardText">
                                             {park.state}
                                         </Card.Text>
-                                        <Link to={"/parks"+park._id}>
+                                        <Card.Text className="cardText">
+                                            {park.year}
+                                        </Card.Text>
+                                        <Link className="parkLink" to={"/parks"+park._id}>
                                             View Park
                                         </Link>
                                     </Card.Body>

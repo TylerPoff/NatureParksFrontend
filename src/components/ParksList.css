@@ -1,4 +1,34 @@
+.main-container {
+    margin-top: 20px;
+}
+
+.parkRow {
+    margin-top: 15px;
+}
+
+.parkListCard {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: item;
+    width: 81rem;
+}
+
 .parkView {
+    padding: 10px;
     max-width: 400px;
     max-height: 600px;
+    object-fit: cover;
+}
+
+.parkTitle {
+    width: 200px;
+    margin-bottom: 0.5rem;
+}
+
+.cardText {
+    margin-bottom: 0.25rem;
+}
+
+.parkLink {
+    margin-top: auto;
 }
