@@ -67,7 +67,7 @@ const ParksList = props => {
         }
     }, [find, searchState, retrieveParks]);
 
-    const retireveNextPage = useCallback(() => {
+    const retrieveNextPage = useCallback(() => {
         if (currentSearchMode === "findByName") {
             findByName();
         } else if (currentSearchMode === "findByState") {
@@ -87,8 +87,8 @@ const ParksList = props => {
     }, [currentSearchMode]);
 
     useEffect(() => {
-        retireveNextPage();
-    }, [currentPage, retireveNextPage]);
+        retrieveNextPage();
+    }, [currentPage, retrieveNextPage]);
 
     
     const onChangeSearchName = e => {
