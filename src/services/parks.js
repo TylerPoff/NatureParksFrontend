@@ -13,7 +13,7 @@ class ParkDataService {
     }
 
     getStates() {
-        return axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parks/states`);
+        return axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/states`);
     }
 }
 

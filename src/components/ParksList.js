@@ -60,7 +60,11 @@ const ParksList = props => {
 
     const findByState = useCallback(() => {
         setCurrentSearchMode("findByState");
-        find(searchState, "state");
+        if(searchState === "All States") {
+            retrieveParks();
+        } else {
+            find(searchState, "state");
+        }
     }, [find, searchState, retrieveParks]);
 
     const retireveNextPage = useCallback(() => {
@@ -162,10 +166,10 @@ const ParksList = props => {
                                             {park.name}
                                         </Card.Title>
                                         <Card.Text className="cardText">
-                                            {park.state}
+                                            <strong>State:</strong> {park.state}
                                         </Card.Text>
                                         <Card.Text className="cardText">
-                                            {park.year}
+                                            <strong>Year Founded:</strong> {park.year}
                                         </Card.Text>
                                         <Link className="parkLink" to={"/parks"+park._id}>
                                             View Park

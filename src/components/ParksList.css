@@ -9,8 +9,14 @@
 .parkListCard {
     display: grid;
     grid-template-columns: max-content 1fr;
-    column-gap: item;
     width: 81rem;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.parkListCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .parkView {
@@ -18,10 +24,11 @@
     max-width: 400px;
     max-height: 600px;
     object-fit: cover;
+    border-radius: 10px 0 0 10px;
 }
 
 .parkTitle {
-    width: 200px;
+    width: 600px;
     margin-bottom: 0.5rem;
 }
 
@@ -32,3 +39,4 @@
 .parkLink {
     margin-top: auto;
 }
+
