@@ -15,6 +15,10 @@ class ParkDataService {
     getStates() {
         return axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/states`);
     }
+
+    getPark(id) {
+        return axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/parks/id/${id}`);
+    }
 }
 
 /*eslint import/no-anonymous-default-export: [2, {"allowNew": true}] */

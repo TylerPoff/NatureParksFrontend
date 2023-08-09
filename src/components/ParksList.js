@@ -171,7 +171,7 @@ const ParksList = props => {
                                         <Card.Text className="cardText">
                                             <strong>Year Founded:</strong> {park.year}
                                         </Card.Text>
-                                        <Link className="parkLink" to={"/parks"+park._id}>
+                                        <Link className="parkLink" to={"/parks/"+park._id}>
                                             View Park
                                         </Link>
                                     </Card.Body>
@@ -186,7 +186,7 @@ const ParksList = props => {
                 variant="link"
                 onClick={() => { setCurrentPage(currentPage + 1)}}
                 >
-                    Get next { entriesPerPage } parks
+                    View Next Page
                 </Button>
             </Container>
         </div>
