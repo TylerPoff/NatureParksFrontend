@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import { Navbar, Nav } from "react-bootstrap";
 
 import './App.css';
+import HomePage from './components/HomePage';
 import ParksList from './components/ParksList';
 import Park from './components/Park';
 
@@ -37,6 +38,11 @@ function App() {
       </Navbar>
 
       <Routes>
+        <Route exact path="/" element={
+          <HomePage
+
+          />}
+        />
         <Route exact path="/parks" element={
           <ParksList
 
