@@ -1,0 +1,17 @@
+.homeCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.welcomeText {
+    font-size: 3rem;
+}
+
+.startText {
+    font-size: 1.5rem;
+    margin-bottom: 700px;
+    margin-top: 20px;
+}

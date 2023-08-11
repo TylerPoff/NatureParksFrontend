@@ -45,7 +45,7 @@ function App() {
               </Nav.Link>
             </div>
             <Navbar.Brand href="/" className="navbar-brand-with-bg">
-              <img src="/images/parks-logo.png" alt="park logo" className="parks-logo"/>
+              <img src="/images/The-Parks-logo.png" alt="park logo" className="parks-logo"/>
             </Navbar.Brand>
             <div className="nav-link-group">
               <Nav.Link as={Link} to="/lists" className="nav-link" style={{ marginRight: '10rem' }}>
