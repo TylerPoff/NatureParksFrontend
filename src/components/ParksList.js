@@ -19,6 +19,7 @@ const ParksList = props => {
     const [currentPage, setCurrentPage] = useState(0);
     const [entriesPerPage, setEntriesPerPage] = useState(0);
     const [currentSearchMode, setCurrentSearchMode] = useState("");
+    const[nextPageDisabled, setNextPageDisabled] = useState(false);
 
     const retrieveStates = useCallback(() => {
         ParkDataService.getStates()
@@ -37,6 +38,7 @@ const ParksList = props => {
                 setParks(response.data.parks);
                 setCurrentPage(response.data.page);
                 setEntriesPerPage(response.data.entries_per_page);
+                setNextPageDisabled(response.data.parks.length < 10);
             })
             .catch(e => {
                 console.log(e);
@@ -116,6 +118,7 @@ const ParksList = props => {
                                 />
                             </Form.Group>
                             <Button
+                                className="searchBtn"
                                 variant="primary"
                                 type="button"
                                 onClick={findByName}
@@ -140,6 +143,7 @@ const ParksList = props => {
                                 </Form.Control>
                             </Form.Group>
                             <Button
+                                className="searchBtn"
                                 variant="primary"
                                 type="button"
                                 onClick={findByState}
@@ -185,9 +189,14 @@ const ParksList = props => {
                 <Button
                 variant="link"
                 onClick={() => { setCurrentPage(currentPage + 1)}}
+                disabled={nextPageDisabled}
                 >
                     View Next Page
                 </Button>
+                <Button
+                    variant="link"
+                    onClick={() => { setCurrentPage(0)}}
+                >To First Page</Button>
             </Container>
         </div>
     )

@@ -40,3 +40,9 @@
     margin-top: auto;
 }
 
+.searchBtn {
+    background-color: green;
+    border-color: green;
+    color: white;
+}
+
