@@ -62,9 +62,35 @@ const Park = () => {
                     </Card>
                 </Col>
             </Row>
+            <Row className='hikeRow'>
+                {park.hikes && park.hikes.map((hike, index) => (
+                    <Col key={index}>
+                        <Card className="hikeCard">
+                            <Card.Body>
+                                <Card.Title className="hikeTitle">
+                                    {hike.hike}
+                                </Card.Title>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+            <Row className='campRow'>
+                {park.camps && park.camps.map((camp, index) => (
+                    <Col key={index}>
+                        <Card className="campCard">
+                            <Card.Body>
+                                <Card.Title className="campTitle">
+                                    {camp.camp}
+                                </Card.Title>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
         </Container>
     </div>
-    )
+    );
 }
 
 export default Park;
