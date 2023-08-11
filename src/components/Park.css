@@ -1,7 +1,38 @@
 .parkCard {
+    background-color: whitesmoke;
     display: grid;
     grid-template-columns: max-content 1fr;
     width: 81rem;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hikeCard {
+    background-color: whitesmoke;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hikeCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hikeTitle {
+
+}
+
+.campCard {
+    background-color: whitesmoke;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+.campCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.campTitle {
+    
 }
