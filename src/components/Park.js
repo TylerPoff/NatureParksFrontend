@@ -70,6 +70,9 @@ const Park = () => {
                                 <Card.Title className="hikeTitle">
                                     {hike.hike}
                                 </Card.Title>
+                                <Button variant="primary" className="addBtn">
+                                    +
+                                </Button>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -83,6 +86,9 @@ const Park = () => {
                                 <Card.Title className="campTitle">
                                     {camp.camp}
                                 </Card.Title>
+                                <Button variant="primary" className="addBtn">
+                                    +
+                                </Button>
                             </Card.Body>
                         </Card>
                     </Col>
