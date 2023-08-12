@@ -1,0 +1,12 @@
+.nullCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.nullText {
+    font-size: 3rem;
+    margin-bottom: 700px;
+}

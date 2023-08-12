@@ -9,6 +9,7 @@ import './App.css';
 import HomePage from './components/HomePage';
 import ParksList from './components/ParksList';
 import Park from './components/Park';
+import Trips from './components/Trips';
 import Login from './components/Login';
 import Logout from './components/Logout';
 
@@ -74,6 +75,11 @@ function App() {
           <Route exact path="/parks/:id" element={
             <Park
 
+            />}
+          />
+          <Route exact path="/trips" element={
+            <Trips
+              user={user}
             />}
           />
         // TODO Add remaining routes
