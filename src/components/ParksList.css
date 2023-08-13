@@ -45,3 +45,9 @@
     border-color: green;
     color: white;
 }
+
+.searchBtn:hover {
+    background-color: green;
+    border-color: green;
+    color: white;
+}
