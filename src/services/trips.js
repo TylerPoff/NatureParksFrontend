@@ -14,3 +14,5 @@ class TripDataService {
         return axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/trips/id/${tripId}`);
     }
 }
+
+export default new TripDataService();

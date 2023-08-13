@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ParkDataService from '../services/parks';
+import TripDataService from '../services/trips';
 import { Link, useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -19,6 +19,24 @@ const Trips = ({
     const [location, setLocation] = useState('');
     const [favoriteMemory, setFavoriteMemory] = useState('');
     const [summary, setSummary] = useState('');
+
+    const submitTrip = async() => {
+        try {
+            const data = {
+                _id: user.googleId,
+                trips: [{
+                        tripTitle,
+                        location,
+                        favoriteMemory,
+                        summary
+                    }]
+            };
+
+            const response = await TripDataService.updateTrip(data);
+        } catch(error) {
+            console.log(error);
+        }
+    };
     
     return (
         <div className="App">
@@ -59,7 +77,7 @@ const Trips = ({
                                 value={summary}
                                 onChange={(e) => setSummary(e.target.value)}
                             />
-                            <Button className="submitBtn">
+                            <Button className="submitBtn" onClick={submitTrip}>
                                 Submit
                             </Button>
                         </div>
