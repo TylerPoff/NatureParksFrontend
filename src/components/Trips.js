@@ -21,18 +21,26 @@ const Trips = ({
     const [summary, setSummary] = useState('');
 
     const submitTrip = async() => {
+        if(!tripTitle || !location || !favoriteMemory || !summary) {
+            console.log('Please fill out all fields');
+            return;
+        }
         try {
             const data = {
                 _id: user.googleId,
-                trips: [{
+                trips: {
                         tripTitle,
                         location,
                         favoriteMemory,
                         summary
-                    }]
+                    }
             };
 
             const response = await TripDataService.updateTrip(data);
+            setTripTitle('');
+            setLocation('');
+            setFavoriteMemory('');
+            setSummary('');
         } catch(error) {
             console.log(error);
         }
