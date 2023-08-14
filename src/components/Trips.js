@@ -15,6 +15,7 @@ const Trips = ({
     user
 }) => {
 
+    const [collapsed, setCollapsed] = useState(false);
     const [tripTitle, setTripTitle] = useState('');
     const [location, setLocation] = useState('');
     const [favoriteMemory, setFavoriteMemory] = useState('');
@@ -45,6 +46,10 @@ const Trips = ({
             console.log(error);
         }
     };
+
+    const toggleCollapse = () => {
+        setCollapsed(!collapsed);
+    };
     
     return (
         <div className="App">
@@ -55,40 +60,39 @@ const Trips = ({
                             Hello, {user.name} 
                         </h1>
                         <div className="logLink">
-                            <Link to="/trips">
-                                Add New Log
-                            </Link>
-                            <Link to="/trips/old">
-                                View Old Logs
-                            </Link>
-                        </div>
-                        <div className="textField">
-                            <input
-                                type="text"
-                                placeholder="Trip Title"
-                                value={tripTitle}
-                                onChange={(e) => setTripTitle(e.target.value)}
-                            />
-                            <input
-                                type="text"
-                                placeholder="Location"
-                                value={location}
-                                onChange={(e) => setLocation(e.target.value)}
-                            />
-                            <textarea
-                                placeholder="Summary"
-                                value={favoriteMemory}
-                                onChange={(e) => setFavoriteMemory(e.target.value)}
-                            />
-                            <textarea 
-                                placeholder="Favorite Memory"
-                                value={summary}
-                                onChange={(e) => setSummary(e.target.value)}
-                            />
-                            <Button className="submitBtn" onClick={submitTrip}>
-                                Submit
+                            <Button className="submitBtn" onClick={toggleCollapse}>
+                                {collapsed ? 'Show Submission Form' : 'Hide Submission Form'}
                             </Button>
                         </div>
+                        {!collapsed && (
+                            <div className="textField">
+                                <input
+                                    type="text"
+                                    placeholder="Trip Title"
+                                    value={tripTitle}
+                                    onChange={(e) => setTripTitle(e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Location"
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                />
+                                <textarea
+                                    placeholder="Summary"
+                                    value={favoriteMemory}
+                                    onChange={(e) => setFavoriteMemory(e.target.value)}
+                                />
+                                <textarea 
+                                    placeholder="Favorite Memory"
+                                    value={summary}
+                                    onChange={(e) => setSummary(e.target.value)}
+                                />
+                                <Button className="submitBtn" onClick={submitTrip}>
+                                    Submit
+                                </Button>
+                            </div>
+                        )}
                     </div>
                 ) : (
                     <div className="nullCenter">
