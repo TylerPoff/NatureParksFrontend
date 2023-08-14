@@ -19,7 +19,7 @@ const ParksList = props => {
     const [currentPage, setCurrentPage] = useState(0);
     const [entriesPerPage, setEntriesPerPage] = useState(0);
     const [currentSearchMode, setCurrentSearchMode] = useState("");
-    const[nextPageDisabled, setNextPageDisabled] = useState(false);
+    const [nextPageDisabled, setNextPageDisabled] = useState(false);
 
     const retrieveStates = useCallback(() => {
         ParkDataService.getStates()

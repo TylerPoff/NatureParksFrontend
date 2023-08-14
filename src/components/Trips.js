@@ -15,6 +15,7 @@ const Trips = ({
     user
 }) => {
 
+    const [trips, setTrips] = useState([]);
     const [collapsed, setCollapsed] = useState(false);
     const [tripTitle, setTripTitle] = useState('');
     const [location, setLocation] = useState('');
