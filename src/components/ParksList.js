@@ -160,7 +160,7 @@ const ParksList = props => {
                                 <Card className="parkListCard">
                                     <Card.Img
                                     className="parkView"
-                                    src={park.image+"/100px180"}
+                                    src={`${park.image}?w=100&h=180`}
                                     onError={(e) => {
                                         e.target.src = "https://placehold.co/600x400?text=No+Image";
                                     }}
