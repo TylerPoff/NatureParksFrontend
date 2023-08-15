@@ -39,6 +39,12 @@ const Trips = ({
             };
 
             const response = await TripDataService.updateTrip(data);
+
+            TripDataService.getTrips(user.googleId)
+                .then(response => {
+                    setTrips(response.data.trips);
+                })
+
             setTripTitle('');
             setLocation('');
             setFavoriteMemory('');
@@ -62,7 +68,7 @@ const Trips = ({
                 console.log(e);
               });
           }
-    }, [user, trips]);
+    }, [user]);
     
     return (
         <div className="App">
@@ -93,13 +99,13 @@ const Trips = ({
                                 />
                                 <textarea
                                     placeholder="Summary"
-                                    value={favoriteMemory}
-                                    onChange={(e) => setFavoriteMemory(e.target.value)}
+                                    value={summary}
+                                    onChange={(e) => setSummary(e.target.value)}
                                 />
                                 <textarea 
                                     placeholder="Favorite Memory"
-                                    value={summary}
-                                    onChange={(e) => setSummary(e.target.value)}
+                                    value={favoriteMemory}
+                                    onChange={(e) => setFavoriteMemory(e.target.value)}
                                 />
                                 <Button className="submitBtn" onClick={submitTrip}>
                                     Submit
@@ -128,7 +134,7 @@ const Trips = ({
                             </Card.Body>
                         </Card>
                     ))}
-                </div>
+                    </div>
                     </div>
                 ) : (
                     <div className="nullCenter">
