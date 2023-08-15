@@ -46,10 +46,39 @@
     background-color: green;
     border-color: green;
     color: white;
+    margin-bottom: 20px;
 }
 
 .submitBtn:hover {
     background-color: green;
     border-color: green;
     color: white;
+}
+
+.tripCard {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    width: 81rem;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tripCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tripTitle {
+    width: 600px;
+    margin-bottom: 0.5rem;
+}
+
+.tripText {
+    margin-bottom: 0.25rem;
+}
+
+.deleteBtn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }

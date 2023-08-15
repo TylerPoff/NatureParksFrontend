@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import TripDataService from '../services/trips';
 import { Link, useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
@@ -51,6 +51,18 @@ const Trips = ({
     const toggleCollapse = () => {
         setCollapsed(!collapsed);
     };
+
+    useEffect(() => {
+        if (user && user.googleId) {
+            TripDataService.getTrips(user.googleId)
+              .then(response => {
+                setTrips(response.data.trips);
+              })
+              .catch(e => {
+                console.log(e);
+              });
+          }
+    }, [user, trips]);
     
     return (
         <div className="App">
@@ -94,6 +106,29 @@ const Trips = ({
                                 </Button>
                             </div>
                         )}
+                        <div className="tripList">
+                        {trips.map((trip, index) => (
+                        <Card className="tripCard">
+                            <Card.Body>
+                                <Card.Title className="tripTitle">
+                                    {trip.tripTitle}
+                                </Card.Title>
+                                <Card.Text className="tripText">
+                                    <strong>Location:</strong> {trip.location}
+                                </Card.Text>
+                                <Card.Text className="tripText">
+                                    <strong>Summary</strong> {trip.summary}
+                                </Card.Text>
+                                <Card.Text className="tripText">
+                                    <strong>Favorite Memory:</strong> {trip.favoriteMemory}
+                                </Card.Text>
+                                <Button variant="danger" className="deleteBtn">
+                                    Delete Trip
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    ))}
+                </div>
                     </div>
                 ) : (
                     <div className="nullCenter">
