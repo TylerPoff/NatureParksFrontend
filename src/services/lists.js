@@ -10,8 +10,8 @@ class ListDataService {
         return axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/lists`, data);
     }
 
-    deleteList(userId, listId) {
-
+    deleteList(userId) {
+        return axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/lists/${userId}`);
     }
 }
 

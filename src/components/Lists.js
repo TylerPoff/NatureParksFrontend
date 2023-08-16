@@ -16,11 +16,25 @@ const Lists = ({
     const [lists, setLists] = useState([]);
     const [listTitle, setListTitle] = useState('');
 
+    const deleteList = async () => {
+        if(user && user.googleId) {
+            try {
+                await ListDataService.deleteList(user.googleId);
+                setLists([]);
+            } catch(error) {
+                console.error(error);
+            }
+        }
+    }
+
     useEffect(() => {
         if(user && user.googleId) {
             ListDataService.getLists(user.googleId)
                 .then(response => {
                     setLists(response.data.list);
+                })
+                .catch(error => {
+                    setLists([]);
                 })
         }
     }, [user])
@@ -36,6 +50,9 @@ const Lists = ({
                         <div className="listContainer">
                             <div>
                                 <h2>Your Bucketlist: </h2>
+                                <Button variant="danger" className="deleteListBtn" onClick={deleteList}>
+                                    Delete Entire List
+                                </Button>
                                 <Row className="listRow">
                                     {lists.map((list, index) => (
                                         <Col key={index} className="listColumn" sm={4}>
