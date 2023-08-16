@@ -10,6 +10,7 @@ import HomePage from './components/HomePage';
 import ParksList from './components/ParksList';
 import Park from './components/Park';
 import Trips from './components/Trips';
+import Lists from './components/Lists';
 import Login from './components/Login';
 import Logout from './components/Logout';
 
@@ -82,7 +83,11 @@ function App() {
               user={user}
             />}
           />
-        // TODO Add remaining routes
+          <Route exact path="/lists" element={
+            <Lists
+              user={user}
+            />}
+          />
         </Routes>
       </div>
     </GoogleOAuthProvider>
