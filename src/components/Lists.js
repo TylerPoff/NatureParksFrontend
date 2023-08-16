@@ -23,7 +23,13 @@ const Lists = ({
                             Hello, {user.name}
                         </h1>
                         <div className="listContainer">
-                            
+                            <div className="listColumn">
+                                <h2>Your Bucketlist: </h2>
+                                {/* MAPPING */}
+                                <Card>
+
+                                </Card>
+                            </div>
                         </div>
                     </div>
                 ) : (

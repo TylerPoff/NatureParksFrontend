@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ParkDataService from '../services/parks';
+import ListDataService from '../services/lists';
 import { Link, useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -11,7 +12,9 @@ import Button from 'react-bootstrap/Button';
 import "./Park.css";
 import "./ParksList.css";
 
-const Park = () => {
+const Park = ({
+    user
+}) => {
 
     let params = useParams();
 
@@ -21,6 +24,7 @@ const Park = () => {
         state: "",
         year: ""
     });
+    const[list, setList] = useState([]);
 
     useEffect(() => {
         const getPark = id => {
@@ -31,6 +35,20 @@ const Park = () => {
         }
         getPark(params.id);
     }, [params.id]);
+
+    const addToList = async (item) => {
+        try {
+            const updatedList = [...list, item];
+            const data = {
+                _id: user.googleId,
+                list: updatedList
+            }
+            ListDataService.updateList(data);
+            setList(updatedList);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div className="App">
@@ -70,7 +88,7 @@ const Park = () => {
                                 <Card.Title className="hikeTitle">
                                     {hike.hike}
                                 </Card.Title>
-                                <Button variant="primary" className="addBtn">
+                                <Button variant="primary" className="addBtn" onClick={() => addToList(hike.hike)}>
                                     +
                                 </Button>
                             </Card.Body>
@@ -86,7 +104,7 @@ const Park = () => {
                                 <Card.Title className="campTitle">
                                     {camp.camp}
                                 </Card.Title>
-                                <Button variant="primary" className="addBtn">
+                                <Button variant="primary" className="addBtn" onClick={() => addToList(camp.camp)}>
                                     +
                                 </Button>
                             </Card.Body>

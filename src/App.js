@@ -75,7 +75,7 @@ function App() {
           />
           <Route exact path="/parks/:id" element={
             <Park
-
+              user={user}
             />}
           />
           <Route exact path="/trips" element={
