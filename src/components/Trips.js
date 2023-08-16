@@ -57,16 +57,11 @@ const Trips = ({
         }
     };
 
-    const deleteTrip = async (tripId) => {
+    const deleteTrip = async (userId, tripId) => {
         try {
-            await TripDataService.deleteTrip(tripId)
-                .then(() => {
-                    const updatedTrips = trips.filter((trip) => trip._id !== tripId);
-                    setTrips(updatedTrips);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+            await TripDataService.deleteTrip(userId, tripId);
+            const updatedTrips = trips.filter((trip) => trip._id !== tripId);
+            setTrips(updatedTrips);
         } catch (error) {
             console.log(error);
         }
@@ -146,7 +141,7 @@ const Trips = ({
                                 <Card.Text className="tripText">
                                     <strong>Favorite Memory:</strong> {trip.favoriteMemory}
                                 </Card.Text>
-                                <Button variant="danger" className="deleteBtn" onClick={() => deleteTrip(trip._id)}>
+                                <Button variant="danger" className="deleteBtn" onClick={() => deleteTrip(user.googleId, trip._id)}>
                                     Delete Trip
                                 </Button>
                             </Card.Body>
