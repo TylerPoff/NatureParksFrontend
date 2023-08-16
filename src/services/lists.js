@@ -3,7 +3,7 @@ import axios from 'axios';
 class ListDataService {
 
     getLists(userId) {
-
+        return axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/lists/${userId}`);
     }
 
     updateList(data) {

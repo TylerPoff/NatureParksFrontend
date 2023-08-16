@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import TripDataService from '../services/trips';
+import ListDataService from '../services/lists';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -14,6 +14,15 @@ const Lists = ({
     const [lists, setLists] = useState([]);
     const [listTitle, setListTitle] = useState('');
 
+    useEffect(() => {
+        if(user && user.googleId) {
+            ListDataService.getLists(user.googleId)
+                .then(response => {
+                    setLists(response.data.list);
+                })
+        }
+    }, [user])
+
     return(
         <div className="App">
             <Container className="main-container">
@@ -25,10 +34,15 @@ const Lists = ({
                         <div className="listContainer">
                             <div className="listColumn">
                                 <h2>Your Bucketlist: </h2>
-                                {/* MAPPING */}
-                                <Card>
-
-                                </Card>
+                                {lists.map((list, index) => (
+                                    <Card key={index}>
+                                        <Card.Body>
+                                            <Card.Title>
+                                                {list}
+                                            </Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                ))}
                             </div>
                         </div>
                     </div>
