@@ -3,6 +3,8 @@ import ListDataService from '../services/lists';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 import "./Lists.css";
 import "./ParksList";
@@ -32,17 +34,22 @@ const Lists = ({
                             Hello, {user.name}
                         </h1>
                         <div className="listContainer">
-                            <div className="listColumn">
+                            <div>
                                 <h2>Your Bucketlist: </h2>
-                                {lists.map((list, index) => (
-                                    <Card key={index}>
-                                        <Card.Body>
-                                            <Card.Title>
-                                                {list}
-                                            </Card.Title>
-                                        </Card.Body>
-                                    </Card>
-                                ))}
+                                <Row className="listRow">
+                                    {lists.map((list, index) => (
+                                        <Col key={index} className="listColumn" sm={4}>
+                                            <Card className="listCard">
+                                                <Card.Body>
+                                                    <Card.Title>{list}</Card.Title>
+                                                    <Button variant="danger" className="minusBtn">
+                                                        -
+                                                    </Button>
+                                                </Card.Body>
+                                            </Card>
+                                        </Col>
+                                    ))}
+                                </Row>
                             </div>
                         </div>
                     </div>
