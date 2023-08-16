@@ -27,6 +27,19 @@ const Lists = ({
         }
     }
 
+    const deleteItem = async (index) => {
+        if(user && user.googleId) {
+            try {
+                const updatedList = [...lists];
+                updatedList.splice(index, 1);
+                await ListDataService.deleteListItem(user.googleId, index);
+                setLists(updatedList);
+            } catch(error) {
+                console.error(error);
+            }
+        }
+    }
+
     useEffect(() => {
         if(user && user.googleId) {
             ListDataService.getLists(user.googleId)
@@ -59,7 +72,7 @@ const Lists = ({
                                             <Card className="listCard">
                                                 <Card.Body>
                                                     <Card.Title>{list}</Card.Title>
-                                                    <Button variant="danger" className="minusBtn">
+                                                    <Button variant="danger" className="minusBtn" onClick={() => deleteItem(index)}>
                                                         -
                                                     </Button>
                                                 </Card.Body>

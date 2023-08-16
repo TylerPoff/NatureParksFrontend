@@ -13,6 +13,10 @@ class ListDataService {
     deleteList(userId) {
         return axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/lists/${userId}`);
     }
+    
+    deleteListItem(userId, index) {
+        return axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/lists/${userId}/${index}`)
+    }
 }
 
 export default new ListDataService();
