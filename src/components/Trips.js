@@ -7,6 +7,7 @@ import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import { v4 as uuidv4 } from 'uuid';
 
 import "./Trips.css";
 import "./ParksList";
@@ -28,9 +29,11 @@ const Trips = ({
             return;
         }
         try {
+            const tripId = uuidv4();
             const data = {
                 _id: user.googleId,
                 trips: {
+                        _id: tripId,
                         tripTitle,
                         location,
                         favoriteMemory,
@@ -50,6 +53,21 @@ const Trips = ({
             setFavoriteMemory('');
             setSummary('');
         } catch(error) {
+            console.log(error);
+        }
+    };
+
+    const deleteTrip = async (tripId) => {
+        try {
+            await TripDataService.deleteTrip(tripId)
+                .then(() => {
+                    const updatedTrips = trips.filter((trip) => trip._id !== tripId);
+                    setTrips(updatedTrips);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } catch (error) {
             console.log(error);
         }
     };
@@ -114,7 +132,7 @@ const Trips = ({
                         )}
                         <div className="tripList">
                         {trips.map((trip, index) => (
-                        <Card className="tripCard">
+                        <Card key={trip._id} className="tripCard">
                             <Card.Body>
                                 <Card.Title className="tripTitle">
                                     {trip.tripTitle}
@@ -128,7 +146,7 @@ const Trips = ({
                                 <Card.Text className="tripText">
                                     <strong>Favorite Memory:</strong> {trip.favoriteMemory}
                                 </Card.Text>
-                                <Button variant="danger" className="deleteBtn">
+                                <Button variant="danger" className="deleteBtn" onClick={() => deleteTrip(trip._id)}>
                                     Delete Trip
                                 </Button>
                             </Card.Body>
